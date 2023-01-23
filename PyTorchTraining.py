@@ -77,7 +77,7 @@ from torch.autograd import Variable
 
 # Function to save the model
 def saveModel():
-    path = "./myFirstModel.pth"
+    path = "./mySecondModel.pth"
     torch.save(model.state_dict(), path)
 
 # Function to test the model with the test dataset and print the accuracy for the test images
@@ -186,7 +186,7 @@ def testBatch():
     print('Predicted: ', ' '.join('%5s' % classes[predicted[j]] 
                               for j in range(batch_size)))
       
-def testClassess():
+def testClasses():
     class_correct = list(0. for i in range(number_of_labels))
     class_total = list(0. for i in range(number_of_labels))
     with torch.no_grad():
@@ -207,7 +207,7 @@ def testClassess():
 if __name__ == "__main__":
     
     # Let's build our model
-    train(5)
+    train(250)
     print('Finished Training')
 
     # Test which classes performed well
@@ -215,7 +215,7 @@ if __name__ == "__main__":
     
     # Let's load the model we just created and test the accuracy per label
     model = Network()
-    path = "myFirstModel.pth"
+    path = "mySecondModel.pth"
     model.load_state_dict(torch.load(path))
 
     # Test with batch of images
