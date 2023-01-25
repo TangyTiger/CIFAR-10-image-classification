@@ -71,13 +71,13 @@ model = Network()
 from torch.optim import Adam
 
 loss_fn = nn.CrossEntropyLoss()
-optimizer = Adam(model.parameters(), lr=0.001, weight_decay=0.0001)
+optimizer = Adam(model.parameters(), lr=0.0005, weight_decay=0.000001)
 
 from torch.autograd import Variable
 
 # Function to save the model
 def saveModel():
-    path = "./mySecondModel.pth"
+    path = "./myFourthModel.pth"
     torch.save(model.state_dict(), path)
 
 # Function to test the model with the test dataset and print the accuracy for the test images
@@ -207,7 +207,7 @@ def testClasses():
 if __name__ == "__main__":
     
     # Let's build our model
-    train(250)
+    train(20)
     print('Finished Training')
 
     # Test which classes performed well
@@ -215,7 +215,7 @@ if __name__ == "__main__":
     
     # Let's load the model we just created and test the accuracy per label
     model = Network()
-    path = "mySecondModel.pth"
+    path = "myFourthModel.pth"
     model.load_state_dict(torch.load(path))
 
     # Test with batch of images
